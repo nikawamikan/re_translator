@@ -50,9 +50,9 @@ async def text_to_image(text: str):
 
 
 @bot.slash_command(name="re_translate", description="逆翻訳します")
-@option("text", discription="翻訳するテキスト")
-@option("source_lang", discription="翻訳前の言語")
-@option("via_langs", discription="翻訳する言語 ex) en,ja")
+@option("text", description="翻訳するテキスト")
+@option("source_lang", description="翻訳前の言語")
+@option("via_langs", description="翻訳する言語 ex) en,ja")
 async def re_translate(
     ctx: discord.ApplicationContext,
     text: str,
@@ -70,9 +70,9 @@ async def re_translate(
 
 
 @bot.slash_command(name="re_translate_image", description="逆翻訳して画像にします")
-@option("text", discription="翻訳するテキスト")
-@option("source_lang", discription="翻訳前の言語")
-@option("via_langs", discription="翻訳する言語 ex) en,ja")
+@option("text", description="翻訳するテキスト")
+@option("source_lang", description="翻訳前の言語")
+@option("via_langs", description="翻訳する言語 ex) en,ja")
 async def re_translate_image(
     ctx: discord.ApplicationContext,
     text: str,
