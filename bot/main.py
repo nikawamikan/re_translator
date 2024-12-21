@@ -4,6 +4,16 @@ from discord import option
 import aiohttp
 from urllib.parse import quote
 from aiocache import cached
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+TOKEN = os.getenv("TOKEN")
+
+if TOKEN is None:
+    raise ValueError("DISCORD_TOKEN is not set")
+
 
 intents = discord.Intents.default()
 
@@ -81,4 +91,4 @@ async def re_translate_image(
         await ctx.interaction.followup.send("エラーが発生しました")
         raise e
 
-bot.run("YourToken")
+bot.run(TOKEN)
