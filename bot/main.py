@@ -115,4 +115,15 @@ async def re_translate_image(
         await ctx.interaction.followup.send("エラーが発生しました")
         raise e
 
+
+@bot.message_command(name="re_translate", description="メッセージを逆翻訳します")
+async def re_translate_message(ctx: discord.ApplicationContext, message: discord.Message):
+    await ctx.defer()
+    try:
+        translated_text = await translate_text(message.content, DEFAULT_SOURCE_LANG, DEFAULT_VIA_LANGS)
+        await ctx.followup.send(translated_text)
+    except Exception:
+        await ctx.followup.send("エラーが発生しました", ephemeral=True)
+        raise
+
 bot.run(TOKEN)
