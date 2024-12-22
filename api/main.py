@@ -2,16 +2,9 @@ from argostranslate import translate
 from fastapi import FastAPI
 from fastapi.responses import PlainTextResponse
 from functools import lru_cache
-from pydantic import BaseModel
 from typing import List
 
 app = FastAPI()
-
-
-class TranslateModel(BaseModel):
-    text: str
-    source_lang: str
-    via_langs: str
 
 
 @lru_cache(2 ** 10)
@@ -25,7 +18,6 @@ def translate_text(text: str, source_lang: str, target_lang: str) -> str:
 
 
 def re_translate_text(text: str, source_lang: str, via_langs: List[str]) -> str:
-
     # 元の言語から中間言語へ翻訳
     translated_text = translate_text(
         text,
