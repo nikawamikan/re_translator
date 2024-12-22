@@ -9,6 +9,11 @@ import os
 
 load_dotenv()
 
+DEFAULT_SOURCE_LANG = "ja"
+DEFAULT_VIA_LANGS = "en,ko,ru,zh"
+SOURCE_EMBED_COLOR = discord.Colour(0x12c4ff)
+DESTINATION_EMBED_COLOR = discord.Colour(0xfd00ac)
+
 TOKEN = os.getenv("TOKEN")
 
 if TOKEN is None:
@@ -56,8 +61,8 @@ async def text_to_image(text: str):
 async def re_translate(
     ctx: discord.ApplicationContext,
     text: str,
-    source_lang: str,
-    via_langs: str,
+    source_lang: str = DEFAULT_SOURCE_LANG,
+    via_langs: str = DEFAULT_VIA_LANGS,
 ):  # Takes one integer parameter
     await ctx.defer()
 
@@ -76,8 +81,8 @@ async def re_translate(
 async def re_translate_image(
     ctx: discord.ApplicationContext,
     text: str,
-    source_lang: str,
-    via_langs: str,
+    source_lang: str = DEFAULT_SOURCE_LANG,
+    via_langs: str = DEFAULT_VIA_LANGS,
 ):  # Takes one integer parameter
     await ctx.defer()
 
